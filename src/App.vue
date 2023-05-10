@@ -6,10 +6,17 @@ const txt = ref("");
 const clearTextHandler = () => {
   txt.value = "";
 };
+const countHandler = (n: number) => {
+  alert(n);
+};
 </script>
 
 <template>
-  <ShowInfo :message="txt" @clear-text="clearTextHandler" />
+  <ShowInfo
+    :message="txt"
+    @clear-text="clearTextHandler"
+    @increase-count="countHandler"
+  />
   <input type="text" v-model="txt" />
 </template>
 

@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { ref } from "vue";
+const count = ref(0);
 defineProps({
   message: String,
 });
+
 defineEmits<{
   (e: "clearText"): void;
+  (e: "increaseCount", v: number): void;
 }>();
 </script>
 
@@ -12,7 +16,9 @@ defineEmits<{
   <button
     @click="
       () => {
+        count += 1;
         $emit('clearText');
+        $emit('increaseCount', count);
       }
     "
   >
