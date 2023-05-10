@@ -3,21 +3,13 @@ import { ref } from "vue";
 import ShowInfo from "./components/ShowInfo.vue";
 
 const txt = ref("");
-const clearTextHandler = () => {
-  txt.value = "";
-};
-const countHandler = (n: number) => {
-  alert(n);
-};
+const items = ref([{ message: "Foo" }, { message: "Bar" }, { message: "Baz" }]);
 </script>
 
 <template>
-  <ShowInfo
-    :message="txt"
-    @clear-text="clearTextHandler"
-    @increase-count="countHandler"
-  />
+  <ShowInfo :message="txt" />
   <input type="text" v-model="txt" />
+  <ShowInfo v-for="item in items" :message="item.message" :key="item.message" />
 </template>
 
 <style scoped></style>
