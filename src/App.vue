@@ -20,17 +20,17 @@ const addNewTodo = () => {
 };
 
 const removeTodoHandler = (id: number) => {
-  todos.value = todos.value.filter((v) => v.id != id);
+  const idx = todos.value.findIndex((v) => v.id == id);
+  if (idx >= 0) {
+    todos.value.splice(idx, 1);
+  }
 };
 
 const editTodoHandler = (id: number, text: string) => {
-  todos.value = todos.value.map((todo) => {
-    if (todo.id == id) {
-      return { text, id };
-    } else {
-      return todo;
-    }
-  });
+  const todo = todos.value.find((v) => v.id == id);
+  if (todo) {
+    todo.text = text;
+  }
 };
 </script>
 
